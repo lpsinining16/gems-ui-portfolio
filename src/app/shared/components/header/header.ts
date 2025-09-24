@@ -12,11 +12,9 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
-
   @Input() activeSection: string = 'home';
   @Output() sectionClicked = new EventEmitter<string>();
 
-  // This method now just emits the ID of the clicked section
   onNavLinkClick(sectionId: string): void {
     this.sectionClicked.emit(sectionId);
   }

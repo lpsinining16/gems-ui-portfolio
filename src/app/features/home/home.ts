@@ -1,5 +1,5 @@
 import { ViewportScroller } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 
@@ -11,13 +11,11 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
-  constructor(private scroller: ViewportScroller, private router: Router) {}
+  // Use an Output to communicate with the parent layout component
+  @Output() sectionClicked = new EventEmitter<string>();
 
-  scrollToSection(sectionId: string): void {
-    this.router.navigate([], {
-      fragment: sectionId,
-      replaceUrl: true
-    });
-    this.scroller.scrollToAnchor(sectionId);
+  // This method now just emits the ID of the section to scroll to
+  onButtonClick(sectionId: string): void {
+    this.sectionClicked.emit(sectionId);
   }
 }
