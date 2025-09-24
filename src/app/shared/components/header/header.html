@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <a class="logo" (click)="onNavLinkClick('home')">LPS.</a>
+  <nav>
+    <a (click)="onNavLinkClick('home')" [class.active-link]="activeSection === 'home'">Home</a>
+    <a (click)="onNavLinkClick('about')" [class.active-link]="activeSection === 'about'">About</a>
+    <a (click)="onNavLinkClick('projects')" [class.active-link]="activeSection === 'projects'">Projects</a>
+    <a (click)="onNavLinkClick('contact')" [class.active-link]="activeSection === 'contact'">Contact</a>
+  </nav>
+</mat-toolbar>
+

@@ -1,0 +1,22 @@
+<!-- Listen for the (sectionClicked) event and call the new handler -->
+<app-header [activeSection]="activeSection()" (sectionClicked)="handleScrollToSection($event)"></app-header>
+
+<main class="main-content">
+  <section id="home">
+    <app-home></app-home>
+  </section>
+
+  <section id="about">
+    <app-about></app-about>
+  </section>
+
+  <section id="projects">
+    <app-projects></app-projects>
+  </section>
+
+  <section id="contact">
+    <app-contact></app-contact>
+  </section>
+</main>
+
+<app-footer></app-footer>

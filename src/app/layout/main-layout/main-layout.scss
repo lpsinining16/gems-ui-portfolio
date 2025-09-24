@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+section {
+  /* Ensure scrolling via fragments lands with space below the header */
+  scroll-margin-top: 70px;
+}
+

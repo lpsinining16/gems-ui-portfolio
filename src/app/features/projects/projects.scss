@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+.projects-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+  }
+
+  .divider {
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 1rem auto;
+    border-radius: 2px;
+  }
+}
+
+.projects-grid {
+  display: grid;
+  // This creates a responsive 2-column grid on wider screens, giving cards more width
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2.5rem;
+  width: 100%;
+  padding: 0 2rem;
+}
+

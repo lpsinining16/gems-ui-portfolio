@@ -1,0 +1,24 @@
+<section class="page-container" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="accent-color">Featured Projects</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Use an @if block to wait for the projects signal to have a value -->
+    @if (projects(); as projectList) {
+      <div class="projects-grid">
+        <!-- Loop through the projects using the new @for syntax -->
+        @for (project of projectList; track project.id) {
+          <app-card [project]="project"></app-card>
+        }
+      </div>
+    } @else {
+      <!-- A styled loading message that matches the theme -->
+      <div class="loading-container">
+        <p>Loading projects...</p>
+      </div>
+    }
+  </div>
+</section>
+

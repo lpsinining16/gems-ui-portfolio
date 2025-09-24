@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body { 
+    height: 100%; 
+    scroll-behavior: smooth;
+}
+
+body { 
+    margin: 0; 
+    font-family: 'Roboto', sans-serif;
+    background-color: #f1f5f9; // Default light background
+    scroll-padding-top: 70px; /* Adjust to match your toolbar height */
+}
+
+/* Section styling for alternating backgrounds */
+.section-light {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.section-dark {
+    background-color: #1e293b;
+    color: #f1f5f9;
+}
+
+/* Material Component Overrides for the new light theme */
+.mat-mdc-form-field {
+    --mat-mdc-form-field-floating-label-color: #475569;
+    --mdc-text-field-outlined-label-text-color: #475569;
+    --mdc-text-field-input-text-color: #0f172a;
+    --mdc-text-field-outlined-idle-border-color: #94a3b8;
+    --mdc-text-field-outlined-hover-border-color: #475569;
+}
+
