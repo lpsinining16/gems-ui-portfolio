@@ -6,10 +6,10 @@
     </div>
 
     <!-- Use an @if block to wait for the projects signal to have a value -->
-    @if (projects(); as projectList) {
+    @if (apiService.profile(); as profile) {
       <div class="projects-grid">
         <!-- Loop through the projects using the new @for syntax -->
-        @for (project of projectList; track project.id) {
+        @for (project of profile.projects; track project._id) {
           <app-card [project]="project"></app-card>
         }
       </div>

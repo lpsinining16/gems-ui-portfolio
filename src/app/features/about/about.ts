@@ -13,36 +13,20 @@ import { ApiService, Profile } from '../../core/services/api';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class About implements OnInit {
-  private apiService = inject(ApiService);
-  // skills = toSignal(this.apiService.getSkills());
-
-  // Use writable signals to store the profile and skills data
-  profile: WritableSignal<Profile | undefined> = signal(undefined);
-  skills: WritableSignal<string[]> = signal([]);
+  public apiService = inject(ApiService);
 
   ngOnInit(): void {
-    // Fetch the data and set the signals' values when the component loads
-    this.apiService.getProfile().subscribe(profileData => {
-      this.profile.set(profileData);
-      console.log('Profile fetched:', profileData);
-    });
-
-    this.apiService.getSkills().subscribe(skillsData => {
-      this.skills.set(skillsData);
-      console.log('Skills fetched:', skillsData);
-    });
+    // Only fetch data if it hasn't been loaded yet
+    if (!this.apiService.profile()) {
+      this.apiService.fetchProfile().subscribe();
+    }
   }
 
-  // Example of how you might update the bio
-  updateBio(): void {
-    const newBio = prompt("Enter a new bio:");
-    if (newBio) {
-      this.apiService.updateProfile({ bio: newBio }).subscribe(() => {
-        // After updating, refetch the profile and set the signal with the new data
-        this.apiService.getProfile().subscribe(profileData => {
-          this.profile.set(profileData);
-        });
-      });
+  updateBio(newBio: string): void {
+    const currentProfile = this.apiService.profile();
+    if (currentProfile) {
+      const updatedProfile = { ...currentProfile, bio: newBio };
+      this.apiService.updateProfile(updatedProfile).subscribe();
     }
   }
 }

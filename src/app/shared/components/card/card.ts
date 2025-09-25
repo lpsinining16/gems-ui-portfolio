@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -20,5 +20,5 @@ import { Project } from '../../../core/services/api';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Card {
- @Input({ required: true }) project!: Project;
+ project = input.required<Project>();
 }
